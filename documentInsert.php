@@ -1,7 +1,7 @@
 <?php
 $page = 'Saisir un document';
 require_once('database/connect.php');
-require_once('database/db_documents.php');
+require_once('database/db_document.php');
 
 include_once('views/header.php');
 include_once('views/documentInsert.php');

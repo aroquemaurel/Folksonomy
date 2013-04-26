@@ -1,9 +1,11 @@
 <?php
-	require_once('database/db_documents.php');
+	require_once('database/db_document.php');
+
 	require_once('functions/user.php');
 	require_once('functions/util.php');
-	require_once('views/alert.php');
+
     $page = 'Documents sauvegardés';
+	require_once('views/alert.php');
     include_once('views/header.php');
     include_once('views/documents.php');
 

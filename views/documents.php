@@ -12,7 +12,7 @@ function listDocuments($xaDocuments, $desc=false, $pseudo=true) {
 		echo '<td>';
 		$doc['motCle'] = array_unique($doc['motCle']);
 		foreach($doc['motCle'] as $keyword) {
-			echo '<a href="search.php?s='.$keyword.'"><span class="label label-info">'.$keyword.'</span></a> ';
+			echo '<a href="search.php?k='.$keyword.'"><span class="label label-info">'.$keyword.'</span></a> ';
 		}
 		if($pseudo) {
 			$doc['utilisateur'] = array_unique($doc['utilisateur']);

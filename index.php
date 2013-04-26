@@ -1,5 +1,6 @@
 ﻿<?php
-	require_once('database/db_documents.php');
+	require_once('database/db_document.php');
+	require_once('database/db_terme.php');
     $page = 'Accueil';
     include_once('views/header.php');
 

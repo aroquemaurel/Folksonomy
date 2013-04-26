@@ -1,5 +1,6 @@
 <?php
 require_once('database/connect.php');
+require_once('database/db_terme.php');
 
 function createJoinsDocuments() {
 	return ('left join decrit on decrit.numeroD = document.numeroD
@@ -8,24 +9,10 @@ function createJoinsDocuments() {
 			 left join sauvegarde on sauvegarde.idUtilisateur = utilisateur.idUtilisateur ');
 }
 
-function keywordExist($xsKeywords) {
-	$result = mysql_query("select numeroT from terme where motCle='$xsKeywords'");
-
-	return ($object = mysql_fetch_object($result));
-}
 function urlExist($xsUrl) {
 	$result = mysql_query("select numeroD from document where url='$xsUrl'");
 
 	return (mysql_fetch_object($result));
-}
-
-function decritExist($xiDocumentD, $xiDocumentT) {
-	$result = mysql_query("select * from decrit 
-		where numeroT='$xiDocumentT'
-			AND numeroD='$xiDocumentD'	
-		") or die(mysql_error());
-
-	return ($object = mysql_fetch_object($result));
 }
 
 function documentUserExist($xiDocumentD, $xiUser) {
@@ -105,22 +92,6 @@ function getNbDocs() {
 
 	$return = $object = mysql_fetch_object($result);
 	return $return->nbDoc; 
-}
-function getAllKeywords() {
-	$return = array();
-	$result = mysql_query("select motCle, count(motCle) as nbKeyword
-		from terme
-		left join decrit
-		on decrit.numeroT = terme.numeroT
-		group by motCle
-		order by motCle 
-		") or die(mysql_error());
-
-	while($object = mysql_fetch_object($result)) {
-		$return[] = $object;
-	}
-
-	return $return;
 }
 
 function getDocumentsByKeywords($xasKeywords) {
