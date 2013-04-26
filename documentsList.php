@@ -5,7 +5,7 @@
     include_once('views/header.php');
     include_once('views/documents.php');
 
-	$documents = getAllDocuments();
-	listDocuments($documents);	
+	echo '<div class="page-header"><h2>Liste de tous les documents du site</h2></div>';
+	listDocuments(getAllDocuments());	
     include_once('views/footer.php');
 ?>

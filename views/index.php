@@ -1,5 +1,6 @@
 <?php
 	$nbDocs = getNbDocs();
+echo '<div class="page-header"><h2>Accueil <small>Le site contient '.$nbDocs.' documents avec '.count($keywords).' mots clés</small></h2></div>';
 echo '<div id="cloudWords">';
 	foreach($keywords as $keyword) {
 		$taille = 7 + ($keyword->nbKeyword / $nbDocs)*100;

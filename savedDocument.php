@@ -9,6 +9,7 @@
     include_once('views/header.php');
     include_once('views/documents.php');
 
+	echo '<div class="page-header"><h2>Liste de mes documents</h2></div>';
 	if(isConnect()) {
 		listDocuments(getDocumentsByUser($_SESSION['id']), true, false);
 	} else {
