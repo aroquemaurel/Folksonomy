@@ -2,54 +2,32 @@
     <fieldset>
         <legend style="text-align: center">Inscription</legend>
 	<div class="addDocument">
-            <?php
-            if(isset($postDocument) && $postDocument) { // Si on a posté undocument 
-                if(isset($resultDocument) && $resultDocument) { //aucune erreur, c'est bon.
-                    afficherAlert('success', 'Votre document à bien été ajouté');
-                } else {
-                    afficherAlert('error', 'Erreur dans l\'insertion du document! ');
-                }
-            }
-            ?>
-
         <div class="control-group">
             <label class="control-label" for="pseudo">Pseudo</label>
             <div class="controls">
-                <input type="text" class="input-large" style="height:25px;" id="pseudo" name="pseudo" />
+                <input type="text" class="input-large" style="height:25px;" id="pseudo" name="pseudo" required />
             </div>
-            <div class="alert alert-error hide alertsForms" id="titreAlert" >
-                <h4 class="alert-heading">Erreur !</h4>
-				Le champ ne peut être vide 
-			</div>
         </div>
         <div class="control-group">
             <label class="control-label" for="email">Adresse e-mail</label>
             <div class="controls">
-                <input class="input-large" style="height:25px;" type="email" id="email" name="email" />
+                <input class="input-large" style="height:25px;" type="email" id="email" name="email" required />
             </div>
-            <div class="alert alert-error hide alertsForms" id="urlAlert" >
-                <h4 class="alert-heading">Erreur !</h4>
-				Le champ ne peut être vide 
-			</div>
         </div>
         <div class="control-group">
             <label class="control-label" for="mdp">Mot de passe</label>
             <div class="controls">
-                <input type="password" class="input-large" style="height:25px;" id="mdp" name="mdp" />
+                <input type="password" class="input-large" style="height:25px;" id="mdp" name="mdp" required/>
             </div>
-            <div class="alert alert-error hide alertsForms" id="keywordsAlert" >
-                <h4 class="alert-heading">Erreur !</h4>
-				Le champ ne peut être vide 
-			</div>
         </div>
         <div class="control-group">
             <label class="control-label" for="confMdp">Confirmation</label>
             <div class="controls">
-                <input type="password" class="input-large" style="height:25px;" id="confMdp" name="confMdp" />
+                <input type="password" class="input-large" style="height:25px;" id="confMdp" name="confMdp" required />
             </div>
-            <div class="alert alert-error hide alertsForms" id="keywordsAlert" >
+            <div class="alert alert-error hide alertsForms" id="confMdpAlert" >
                 <h4 class="alert-heading">Erreur !</h4>
-				Le champ ne peut être vide 
+					Les deux mots de passes sont différents
 			</div>
         </div>
 
@@ -69,16 +47,8 @@
         $("#postAddDocument").on("submit", function(){
             $("div.alert").hide();
             var retour = true;
-            if($('#titre').val().length <= 0) {
-                $("#titreAlert").show("slow");
-                retour = false;
-            }
-            if($('#url').val().length <= 0) {
-                $("#urlAlert").show("slow");
-                retour = false;
-            }
-            if($('#keywords').val().length <= 0) {
-                $("#keywordsAlert").show("slow");
+            if($('#mdp').val() != $('#confMdp').val()) {
+                $("#confMdpAlert").show("slow");
                 retour = false;
             }
 

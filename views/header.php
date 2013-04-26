@@ -77,7 +77,7 @@ require_once('functions/user.php');
 						}
 
 				if(isset($_SESSION['pseudo']) && $_SESSION['connect']) {
-					echo '<li><a href="savedDocument.php">Documents sauvegardés</a></li>';
+					echo '<li><a href="savedDocument.php">Mes documents</a></li>';
 					echo '<li><a href="deconnexion.php">Déconnexion ('.$_SESSION['pseudo'].')</a></li>';
 				} else {
 					echo '	<li '; if($page == "Inscription") echo 'class="active"';
@@ -90,8 +90,8 @@ require_once('functions/user.php');
 				if(!(isset($_SESSION['pseudo']) && $_SESSION['connect'])) {
 					echo '
                  <form class="navbar-form pull-right" action="index.php?p=connect" method="post">
-                        <input class="input-small" type="text" name="user" placeholder="Utilisateur">
-                        <input class="input-small" type="password" name="mdp" placeholder="Password">
+                        <input class="input-medium" type="text" name="user" placeholder="Utilisateur">
+                        <input class="input-medium" type="password" name="mdp" placeholder="Password">
 						<button class="btn btn-primary" type="submit"><i class="icon-white icon-user"></i> Se connecter</button>
                     </form> 
 					';

@@ -18,7 +18,7 @@ function listDocuments($xaDocuments, $desc=false, $pseudo=true) {
 			$doc['utilisateur'] = array_unique($doc['utilisateur']);
 			echo '<td>';
 			foreach($doc['utilisateur'] as $user) {
-				echo $user.' ' ;
+				echo '<a href="search.php?u='.$user.'"><span class="label">'.$user.'</span></a> ' ;
 			}
 			echo	'</td>';
 		}

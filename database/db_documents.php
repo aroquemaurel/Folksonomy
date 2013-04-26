@@ -5,7 +5,7 @@ function createJoinsDocuments() {
 	return ('left join decrit on decrit.numeroD = document.numeroD
 			 left join terme on terme.numeroT = decrit.numeroT
 			 left join utilisateur on utilisateur.idUtilisateur = decrit.idUtilisateur
-			 left join sauvegarde on sauvegarde.idUtilisateur = utilisateur.idUtilisateur');
+			 left join sauvegarde on sauvegarde.idUtilisateur = utilisateur.idUtilisateur ');
 }
 
 function keywordExist($xsKeywords) {
@@ -67,13 +67,13 @@ function insertDocument($xsTitle, $xsUrl, $xasKeywords, $xiIdUser, $xsDescriptio
 	}
 }
 
-function getMyDocuments($xidUtilisateur) {
+function getDocumentsByUser($xidUtilisateur) {
 	$return = array();
-	$result = mysql_query("select document.numeroD, titre, url, motCle, description from document".createJoinsDocuments()."
+	$result = mysql_query("select document.numeroD, titre, url, motCle, description from document ".createJoinsDocuments()."
 		where utilisateur.idUtilisateur = $xidUtilisateur 
+		AND   document.numeroD = sauvegarde.numeroD
 		order by titre
 		") or die(mysql_error());
-
         while($object = mysql_fetch_object($result)) {
             $return[$object->numeroD]['idDoc'] = $object->numeroD;
             $return[$object->numeroD]['titre'] = $object->titre;
@@ -86,7 +86,7 @@ function getMyDocuments($xidUtilisateur) {
 }
 function getAllDocuments() {
 	$return = array();
-	$result = mysql_query("select document.numeroD, titre, url, motCle,pseudo from document".createJoinsDocuments()."
+	$result = mysql_query("select document.numeroD, titre, url, motCle,pseudo from document ".createJoinsDocuments()."
 		order by titre
 		") or die(mysql_error());
 
