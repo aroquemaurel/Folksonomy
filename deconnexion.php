@@ -1,6 +1,7 @@
 <?php
 $page = "Deconnexion";
 include_once('views/header.php');
+include_once('views/alert.php');
 include_once('functions/util.php');
 require_once('database/connect.php');
 if(isConnect()) {
