@@ -91,18 +91,34 @@
 	une multitude d'utilisateurs, celui-ci à été légèrement modifié. Figure ??? est présent le nouveau modèle. % TODO ref
 	% TODO MCD
 
-	\section{Afficher un nuage de tag}
-	\section{Lister les documents enregistrés sur le site}
-	\section{Afficher tous les documents liés à un tag donné}
-	\section{Rechercher un document en fonction de tags}
-	\section{Inscription d'un nouvel utilisateur}
-	\section{Afficher les documents enregistrés par un utilisateur}
+	\begin{description}
+		\item[Insertion d'un nouveau document] 
+	Le site doit permettre d'ajouter un nouveau document, et de le lier à des tags. Si l'adresse du site existe déjà dans la base de
+	données, celle-ci n'est pas ajoutée de nouveau, seuls les nouveaux tags sont ajoutés.
+		\item[Lister les documents enregistrés sur le site] 
+	Il doit être possible de lister tous les documents présent dans la base de données, ainsi que les tags associés. Il est également
+	possible de savoir quels utilisateur ont enregistrés un document.
+		\item[Afficher un nuage de tag] 
+	L'application doit pouvoir afficher un << tag cloud >> ou nuage de tag. Les différents tag s'affiche d'une taille différente et
+	d'une couleur plus foncée en fonctions de leur importance, c'est-à-dire du nombre de document liés à ce tag. 
+		\item[Afficher tous les docuemnts liés à un tag donné] 
+	Il doit être possible d'afficher tous les documents étant liés à un tag donné.
+		\item[Rechercher un document en fonction d'un ou plusieurs tags] 
+	On peut rechercher un document en fonction d'un ou plusieurs tags.
+	\item[Inscription d'un nouvel utilisateur] 
+	Il est également possible de s'inscrire afin d'utiliser le système, pour cela un pseudo, une adresse e-mail et un mot de passe sont
+	demandés, les mots de passes sont cryptés dans la base de données. L'inscription d'un utilisateur lui permet ensuite d'ajouter
+	de nouveaux documents, de leur donner une description personnaliser et de lister tous les documents lui appartenant.
+	\item[Afficher les documents enregistrés par un utilisateur] 
+	Enfin, un utilisateur peut afficher uniquement les doc\-uments lui appartenant.
+	\end{description}
 
 	\chapter{Organisation du travail}
 	Pour ce projet, j'étais seul, ainsi cela fut plus simples que lors du projet précédent où nous étions deux à travailler dessus. 
 
 	Cependant, afin de bien organiser mon travail, de n'oublier aucune fonctionnalités et de ne rien perdre en cas de problème
-	technique, j'ai choisis pour ce projet également d'utiliser un outil de gestion de projet et un logiciel de versionnement.
+	technique, j'ai choisis pour ce projet d'utiliser un outil de gestion de projet et un logiciel de versionnement de la même
+	manière que le projet précédent.
 	\section{Un outil de gestion de projet : Redmine}
 	\begin{figure}[H]
 		\centering
@@ -110,6 +126,7 @@
 		\caption{Affichage des demandes dans Redmine}
 		\label{fig:redmine}
 	\end{figure}
+	% TODO screen redmine
 	Pour le projet, j'ai utilisé \textit{Redmine}, une plateforme web de gestion de projet (Cf figure \ref{fig:redmine}). Elle m'a permis 
 	de simplifier le travail, et de ne rien oublier.
 
@@ -117,7 +134,7 @@
 	etc\ldots 
 
 	\section{Un logiciel de versionnement : Git}
-	Afin de limiter les problèmes du travail collaboratif, j'ai utilisé un logiciel de versionnement Git. Il a deux intérêt, tout
+	Afin de limiter les problèmes liés à une perte de données, j'ai utilisé un logiciel de versionnement Git. Il a deux intérêt, tout
 	d'abord, je pouvais travailler de plusieurs ordinateurs en parallèle sur le projet sans me soucier de fusionner le travail\footnote{À condition de ne pas travailler sur deux lignes de code identiques}.
 
 	D'autre part, tous les logs étant enregistrés, je pouvais voir l'avancée du projet. 
@@ -129,8 +146,8 @@
 		La conception du projet est l'étape la plus importante, ainsi j'ai préféré repenser à notre manière le projet, 
 		je suis partis sur une architecture respectant le patron de conception MVC\footnote{Modèles Vue Contrôleur ou
 		\textit{pattern MVC} : Model View Controller en anglais}, c'est à
-		dire que toute la partie affichage (notamment le \bsc{HTML}), Modèle (c'est-à-dire les requêtes \bsc{SQL}) sont séparés, c'est le Contrôleur qui dirige le
-		modèle et la vue, c'est ainsi le \textit{chef d'orchestre}.
+		dire que toute la partie affichage (notamment le \bsc{HTML}), Modèle (c'est-à-dire les requêtes \bsc{SQL}) sont séparés, 
+		c'est le Contrôleur qui dirige le modèle et la vue, c'est ainsi le \textit{chef d'orchestre}.
 		\section{Mise en forme : les vues}
 			Afin d'avoir un site web élégant sans passer beaucoup de temps à réinventer la roue en \bsc{CSS}, j'ai choisi d'utiliser un
 			framework\footnote{Kit de composants logiciels structurels, qui sert à créer les fondations ainsi que les grandes lignes de tout ou d’une partie d'un
@@ -139,6 +156,7 @@
 
 			\subsection{Le CSS} Le \bsc{css} est présent dans le dossier \texttt{style/css}, dedans est présent d'une part le
 			\bsc{css} fourni par \bootstrap{}, auquel je n'ai pas touché, d'autre part, mon \bsc{css} qui surcharge certains affichage de \bootstrap{}, celui-ci est dans \texttt{style/css/style.css}.
+			% TODO
 			\lstinputlisting[language=CSS, caption=Exemple d'une partie du CSS]{code/css.css}
 				
 		\subsection{Le \bsc{HTML}}
@@ -148,27 +166,29 @@
 		Les vues peuvent ne comporter que du \bsc{html}, comme c'est le cas dans les formulaires, mais ils peuvent également comporter des instructions simples
 		de \bsc{php} comme des boucles ou des conditions.
 
-% TODO modifier
-		Le dossier \texttt{views} contient également les fonctions de série et épisode servant uniquement à l'affichage de ceux-ci.
-			\lstinputlisting[language=PHP, mathescape=false, caption=Vue de la page permettant de rechercher une série]{code/vue.php}
+		Le dossier \texttt{views} contient également les fonctions d'affichage des documents ou une fonction permettant d'afficher une alerte. 
+			\lstinputlisting[language=PHP, mathescape=false, caption=Fonction d'affichage d'une liste de documents]{code/documents.php}
 		\section{Connexions à la base de données : Les modèles}
-		L'application ne comporte que deux modèles : un pour les séries et un pour les épisodes, ces deux fichiers contiennent des fonctions effectuant des
+		L'application comporte trois modèles : un pour les documents, un pour les termes, et un pour les utilisateurs. Ces trois fichiers contiennent des fonctions effectuant des
 		requêtes et retournant un tableau avec les attributs, ceci afin de bien séparer le \bsc{sql} du \bsc{php}.
 
-		Également présent dans le dossier \texttt{database}, le fichier \texttt{connect.php} contient les identifiants et les instructions de connexion à la base de données.
+		Également présent dans le dossier \texttt{database}, le fichier \texttt{connect.php} contient les identifiants et les
+		instructions de connexion à la base de données. Le fichier \texttt{database.php} quant à lui contient les requêtes de
+		création et suppression de la base.
 
-		\lstinputlisting[language=SQL, mathescape=false, caption=Requête sélectionnant toutes les séries]{code/sql.sql}
-		\lstinputlisting[language=PHP, mathescape=false, caption=Requête recherchant des épisodes]{code/sql.php}
+		\lstinputlisting[language=SQL, mathescape=false, caption=Requête sélectionnant les documents d'un utilisateur donné ]{code/sql.sql}
+		\lstinputlisting[language=PHP, mathescape=false, caption=Fonction d'insertion d'un document]{code/sql.php}
 		\section{Liaison des vues aux modèles : Les contrôleurs}
-		Chaque contrôleur correspond aux pages que verra un utilisateur lambda dans l'URL, les contrôleurs sont en général assez simples, ils font appels au
-		modèle puis font une inclusion de la vue, ceux sont eux qui feront les éventuels vérifications sur des paramètres, sur une connexion pour la partie
-		privée etc\ldots
-		\lstinputlisting[language=PHP, mathescape=false, caption=Contrôleur de la page d'accueil]{code/controleur.php}
-		Comme dit plus haut, c'est relativement simple, on inclus les vues et fonctions nécessaires, on demande l'obtention des séries, on fait quelques
-		vérifications puis on affiche la vue de la page d'accueil.
+		Chaque contrôleur correspond aux pages que verra un utilisateur lambda dans l'URL, les contrôleurs sont en général assez
+		simples, ils font appels au modèle puis font une inclusion de la vue, ceux sont eux qui feront les éventuels vérifications
+		sur des paramètres, sur une connexion pour l'insertion de document etc\ldots
+		\lstinputlisting[language=PHP, mathescape=false, caption=Contrôleur de l'insertion d'un document]{code/controleur.php}
+		Comme dit plus haut, c'est relativement simple, on inclus les vues et fonctions nécessaires, on vérifie qu'on a le droit
+		d'être ici, on créer le tableau de mots clés, puis on insère le tout e faisant appel au modèle.
+
 	\chapter{Résultats obtenus}
-	Dans cette partie, nous allons regrouper quelques captures d'écrans montrant les résultats obtenus sur notre application Web. L'application est répartie en 3
-	fonctionnalités : 
+	Dans cette partie, nous allons regrouper quelques captures d'écrans montrant les résultats obtenus sur notre application Web.
+	L'application est répartie en 3 fonctionnalités principales : 
 	\begin{itemize}
 		\item L'affichage des séries et épisodes présents
 		\item La recherche de série ou épisodes

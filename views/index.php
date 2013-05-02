@@ -4,7 +4,7 @@ echo '<div class="page-header"><h2>Accueil <small>Le site contient '.$nbDocs.' d
 echo '<div id="cloudWords">';
 	foreach($keywords as $keyword) {
 		$taille = 7 + ($keyword->nbKeyword / $nbDocs)*100;
-		echo '<a href="search.php?s='.$keyword->motCle.'"><span class="keyword" style="color: rgb('.(round(160-$taille)+10).','.(round(150-$taille)+10).','.(round(240-$taille)+10).'); font-size: '.$taille.'pt">'.$keyword->motCle.'</span></a> ';
+		echo '<a href="search.php?k='.$keyword->motCle.'"><span class="keyword" style="color: rgb('.(round(160-$taille)+10).','.(round(150-$taille)+10).','.(round(240-$taille)+10).'); font-size: '.$taille.'pt">'.$keyword->motCle.'</span></a> ';
 	}
 	echo '</div>';
 include('views/forms/search.php');

@@ -1,7 +1,13 @@
--- Retourne toutes les séries avec pour chaque série le nombre de saison
--- et le nombre d'épisodes
-select distinct noms, series.image, series.cs, types, max(saison) AS nb_saisons, count(numero) as nb_episodes
-from series
-left join episodes
-on series.cs = episodes.cs
-group by types, noms 
+select document.numeroD, titre, url, motCle, description 
+from document 
+
+-- Jointures de l'intégralité du modèle
+left join decrit on decrit.numeroD = document.numeroD
+left join terme on terme.numeroT = decrit.numeroT
+left join utilisateur on utilisateur.idUtilisateur = decrit.idUtilisateur
+left join sauvegarde on sauvegarde.idUtilisateur = utilisateur.idUtilisateur 
+-- Selection de l'utilisateur
+where utilisateur.idUtilisateur = &parametreIdUtilisateur
+-- On joint également la table document
+	and   document.numeroD = sauvegarde.numeroD
+order by titre;
