@@ -1,0 +1,24 @@
+\BOOKMARK [0][-]{chapter.1}{Les besoins de l'application}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Afficher un nuage de tag}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Lister les documents enregistr\351s sur le site}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Afficher tous les documents li\351s \340 un tag donn\351}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Rechercher un document en fonction de tags}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Inscription d'un nouvel utilisateur}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{Afficher les documents enregistr\351s par un utilisateur}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Organisation du travail}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Un outil de gestion de projet : Redmine}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Un logiciel de versionnement : Git}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Impl\351mentation et conception}{}% 11
+\BOOKMARK [1][-]{section.3.1}{Mise en forme : les vues}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.1.1}{Le CSS}{section.3.1}% 13
+\BOOKMARK [2][-]{subsection.3.1.2}{Le JavaScript}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.3}{Le HTML}{section.3.1}% 15
+\BOOKMARK [1][-]{section.3.2}{Connexions \340 la base de donn\351es : Les mod\350les}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.3}{Liaison des vues aux mod\350les : Les contr\364leurs}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{R\351sultats obtenus}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Affichage des s\351ries et \351pisodes}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{Recherche}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{Ajout de s\351ries et \351pisodes}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.4}{Valide HTML5}{chapter.4}% 22
+\BOOKMARK [0][-]{appendix.A}{Table des figures}{}% 23
+\BOOKMARK [0][-]{appendix.B}{Liste des codes sources}{}% 24
