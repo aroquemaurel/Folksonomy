@@ -42,6 +42,7 @@
             <label class="control-label" for="url">Mots clés</label>
             <div class="controls">
                 <input type="text" class="input-large" style="height:25px;" id="keywords" name="keywords" required />
+<p>Les différents mots clés doivent être séparés par des points virgules (;)</p>
             </div>
             <div class="alert alert-error hide alertsForms" id="keywordsAlert" >
                 <h4 class="alert-heading">Erreur !</h4>
