@@ -6,7 +6,7 @@ require_once('functions/user.php');
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>TODO - <?php echo $page; ?></title>
+    <title>Folksonomies - <?php echo $page; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -57,7 +57,7 @@ require_once('functions/user.php');
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="index.php">CHANGEME</a>
+                <a class="brand" href="index.php">Folksonomies</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
 						<li <?php if($page == "Accueil") echo 'class="active"'; ?>>

@@ -1,5 +1,5 @@
 <?php
-	require_once('database/db_documents.php');
+	require_once('database/db_document.php');
 	require_once('database/database.php');
     $page = 'Création de la base de données';
     include_once('views/header.php');
