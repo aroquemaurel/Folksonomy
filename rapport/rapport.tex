@@ -63,8 +63,6 @@
 	\section*{Tester le projet}
 	L'archive que vous avez reçus est organisée comme ceci: 
 	\begin{description}
-		\item[scriptCreationBd.sql] Contient le script de création de la base de données, celui-ci contient un jeu d'essai. Il est
-			également possible de supprimer le schéma, et de le créer via l'application. 
 		\item[folksonomies/] Contient tous les fichiers du Site Web. 
 		\item[rapport.pdf] Le présent rapport que vous êtes en train de lire
 	\end{description}
@@ -88,8 +86,13 @@
 	en fonction de tags, \ldots
 
 	Pour cela, un modèle de base de données nous à été fournis, mon application ayant été légèrement améliorée afin de pouvoir gérer
-	une multitude d'utilisateurs, celui-ci à été légèrement modifié. Figure ??? est présent le nouveau modèle. % TODO ref
-	% TODO MCD
+	une multitude d'utilisateurs, celui-ci à été légèrement modifié. Figure \ref{fig:redmine} est présent le nouveau modèle. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=10cm]{screens/mcd.png} 
+		\caption{Modèle conceptuel de données de l'application}
+		\label{fig:redmine}
+	\end{figure}
 
 	\begin{description}
 		\item[Insertion d'un nouveau document] 
@@ -103,12 +106,13 @@
 	d'une couleur plus foncée en fonctions de leur importance, c'est-à-dire du nombre de document liés à ce tag. 
 		\item[Afficher tous les docuemnts liés à un tag donné] 
 	Il doit être possible d'afficher tous les documents étant liés à un tag donné.
-		\item[Rechercher un document en fonction d'un ou plusieurs tags] 
-	On peut rechercher un document en fonction d'un ou plusieurs tags.
+		\item[Rechercher un document] 
+	On peut rechercher un document en fonction d'un ou plusieurs tags. Si plusieurs tags sont rensignés, la rechercher retournera
+	tous les documents étant associés à au moins un des tags.
 	\item[Inscription d'un nouvel utilisateur] 
 	Il est également possible de s'inscrire afin d'utiliser le système, pour cela un pseudo, une adresse e-mail et un mot de passe sont
 	demandés, les mots de passes sont cryptés dans la base de données. L'inscription d'un utilisateur lui permet ensuite d'ajouter
-	de nouveaux documents, de leur donner une description personnaliser et de lister tous les documents lui appartenant.
+	de nouveaux documents, de leur donner une description personnalisée et de lister tous les documents lui appartenant.
 	\item[Afficher les documents enregistrés par un utilisateur] 
 	Enfin, un utilisateur peut afficher uniquement les doc\-uments lui appartenant.
 	\end{description}
@@ -122,11 +126,10 @@
 	\section{Un outil de gestion de projet : Redmine}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=18cm]{screens/redmine.png} %% TODO CHANGME
+		\includegraphics[width=18cm]{screens/redmine.png} 
 		\caption{Affichage des demandes dans Redmine}
 		\label{fig:redmine}
 	\end{figure}
-	% TODO screen redmine
 	Pour le projet, j'ai utilisé \textit{Redmine}, une plateforme web de gestion de projet (Cf figure \ref{fig:redmine}). Elle m'a permis 
 	de simplifier le travail, et de ne rien oublier.
 
@@ -143,7 +146,7 @@
 	comparer deux versions afin de voir les changements et de comprendre rapidement pourquoi une fonctionnalité à régressé. 
 
 	\chapter{Implémentation et conception}
-		La conception du projet est l'étape la plus importante, ainsi j'ai préféré repenser à notre manière le projet, 
+		La conception du projet est l'étape la plus importante, ainsi j'ai préféré repenser à ma manière le projet, 
 		je suis partis sur une architecture respectant le patron de conception MVC\footnote{Modèles Vue Contrôleur ou
 		\textit{pattern MVC} : Model View Controller en anglais}, c'est à
 		dire que toute la partie affichage (notamment le \bsc{HTML}), Modèle (c'est-à-dire les requêtes \bsc{SQL}) sont séparés, 
@@ -156,8 +159,13 @@
 
 			\subsection{Le CSS} Le \bsc{css} est présent dans le dossier \texttt{style/css}, dedans est présent d'une part le
 			\bsc{css} fourni par \bootstrap{}, auquel je n'ai pas touché, d'autre part, mon \bsc{css} qui surcharge certains affichage de \bootstrap{}, celui-ci est dans \texttt{style/css/style.css}.
-			% TODO
-			\lstinputlisting[language=CSS, caption=Exemple d'une partie du CSS]{code/css.css}
+			\lstinputlisting[language=CSS, caption=Code CSS]{code/css.css}
+			\subsection{Le JavaScript}
+			Le JavaScript quant à lui est dans le dossier \texttt{style/js/}, cependant je n'ai personnellement pas modifié de
+			JavaScript, je me suis servis de celui existant pour quelques fonctions de base, comme l'affichage d'une boite de
+			dialogue ou des messages d'informations pouvant être masqué à l'aide d'un clic.
+
+			\bootstrap{} utilise le framework JavaScript Jquery.
 				
 		\subsection{Le \bsc{HTML}}
 		Le \bsc{html} correspond aux vues, tous les fichiers contenant du HTML sont dans le dossier \texttt{views/}, les formulaires 
@@ -184,71 +192,82 @@
 		sur des paramètres, sur une connexion pour l'insertion de document etc\ldots
 		\lstinputlisting[language=PHP, mathescape=false, caption=Contrôleur de l'insertion d'un document]{code/controleur.php}
 		Comme dit plus haut, c'est relativement simple, on inclus les vues et fonctions nécessaires, on vérifie qu'on a le droit
-		d'être ici, on créer le tableau de mots clés, puis on insère le tout e faisant appel au modèle.
+		d'être ici, on créer le tableau de mots clés, puis on insère le tout en faisant appel au modèle.
 
 	\chapter{Résultats obtenus}
 	Dans cette partie, nous allons regrouper quelques captures d'écrans montrant les résultats obtenus sur notre application Web.
-	L'application est répartie en 3 fonctionnalités principales : 
+	L'application est répartie en 5 fonctionnalités principales : 
 	\begin{itemize}
-		\item L'affichage des séries et épisodes présents
-		\item La recherche de série ou épisodes
-		\item L'ajout de série ou épisodes
+		\item Nuage de tags
+		\item Recherche
+		\item Liste des documents d'un utilisateur
+		\item Affichage de << Mes documents >> 
+		\item Création et suppression de la base de données
 	\end{itemize}
-	L'ajout d'épisodes implique la possibilité de se connecter afin que seul l'administrateur puisse utiliser l'administration.
-	\remarque{Le couple login/mot de passe de l'application est admin/admin}
-	\section{Affichage des séries et épisodes}
-	\begin{figure}[H]
-		\includegraphics[width=18.0cm]{screens/accueil.png}
-		\caption{Page d'accueil de l'application}
-		\label{fig:accueil}
-	\end{figure}
-	La figure \ref{fig:accueil} nous montre la page d'accueil du site, avec la possibilité de sélectionner une série via le menu de gauche, affichant ainsi tous
-	ses épisodes. On peut remarquer sur cette figure que le site possède un thème qui est commun à tout le site : la barre de navigation en haut de l'écran
-	permet d'accéder d'un clique à chacune des fonctionnalités présentes sur le site.
-	\section{Recherche}
+	\section{Nuage de tags et recherche}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=15.7cm]{screens/rechercheSerie.png}
-		\caption{Recherche d'une série}
-		\label{fig:rechercheSerie}
+		\includegraphics[width=18cm]{screens/index.png} 
+		\caption{Nuage de tags et recherche} 
+		\label{fig:index}
 	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=15.7cm]{screens/rechercheEpisodes.png}
-		\caption{Recherche d'un épisode}
-		\label{fig:rechercheEpisode}
-	\end{figure}
-	Les figures \ref{fig:rechercheSerie} et \ref{fig:rechercheEpisode} nous montrent respectivement la recherche d'une série et la recherche d'un épisode.
+	Comme demandé dans les besoins, notre applications permet d'afficher un nuage de tags, celui-ci est visible sur la première
+	partie de la figure \ref{fig:index}. Les couleurs et les tailles des mots clés varient en fonction de leur nombre d'occurrence
+	dans les différents documents.
 
-	Ces deux fonctionnalités sont assez similaires, bien que les critères de recherches soit différents. Ainsi, la recherche d'une série affiche les séries
-	répondants au critères renseignés\footnote{Une série peut être cherché par son type, son titre, ses années de diffusion ainsi que son age}, ainsi que la
-	possibilité d'affiche les épisodes correspondants de la série.
+	Une recherche est également possible sur la page d'accueil, celle-ci se trouve en dessous du nuage de tag sur la figure
+	\ref{fig:index}. Il est possible de renseigner plusieurs mots clés différents, ceux-ci doivent être séparé par des espaces dans
+	le champ de recherche.\\
+	Le résultat de la recherche s'affiche en dessous du champ de recherche.
 
-	La recherche d'un épisode quand à elle à une mise en forme différente, étant donné qu'il y a plus d'informations a afficher pour un épisode, cependant le
-	principe reste le même via les critères de recherche\footnote{Un épisode peut être trouvé grâce à sa série, son année de diffusion, sa saison, le prix
-	maximum auquel on veut l'acheter, ainsi que sa disponibilité (Streaming, Location, Achat)}
-	\section{Ajout de séries et épisodes}
+	\remarque{Ces deux fonctionnalités sont disponible dans être identifiés, tout le monde peut donc y avoir accès}
+	\section{Liste de tous les documents}
+	Il est possible d'afficher la liste de tous les documents présents sur le site. Ceux-ci s'afficheront de la même manière que
+	lors de l'affichage dans la recherche. Dans cette liste le clique sur un tag, renvoie sur un affichage de tous les documents
+	associés à ce tag, le clique sur un utilisateur affiche tous les documents de cet utilisateur, enfin le clique sur le nom du
+	document correspond à l'adresse web enregistrée en base de données.
+
+	Cette liste est disponible figure \ref{fig:listeDocs}.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=18.5cm]{screens/adminEpisode.png}
-		\caption{Administration}
-		\label{fig:admin}
+		\includegraphics[width=18cm]{screens/documents.png} 
+		\caption{Liste de tous les documents} 
+		\label{fig:listeDocs}
 	\end{figure}
-	La figure \ref{fig:admin} nous montre la partie administration, ici l'ajout d'un nouvel épisode à la série \textit{Doctor Who}, tous les champs présents
-	précédemment peuvent être renseignés, cependant seuls les champs Série, Titre, Numéro et Saison sont obligatoires, les autres sont facultatifs.\\
-	Il est également possible de sélectionner une image pour la série depuis notre ordinateur via un champ d'upload.
+	\remarque{La liste de l'intégralité des documents du site est disponible à tout le monde, ainsi l'authentification n'est pas
+	nécessaire.}
 
-	Nous n'avons pas fait de capture d'écrans de l'ajout d'une série, cependant le principe est le même bien que les champs soient moins nombreux, pour une
-	série, les champs Type et Nom sont obligatoires.
-	\section{Valide HTML5}
+	\section{Liste des documents d'un utilisateur}\label{docUser}
+	Comme le montre la figure \ref{fig:docUser} il est possible d'afficher les documents enregistrés par un utilisateur. Ces
+	documents n'affichent pas la description mise par l'utilisateur, cette information étant considérée confidentielle.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=17cm]{screens/htmlValidator.png}
-		\caption{HTML5 validator -- Passed}
-		\label{fig:htmlValidator}
+		\includegraphics[width=18cm]{screens/documentUser.png} 
+		\caption{Liste des documents d'un utilisateur}
+		\label{fig:docUser}
 	\end{figure}
-	La figure \ref{fig:htmlValidator} montre simplement notre site web passant la validation du \bsc{w3c}\footnote{World Wide Web Consortium} avec la norme
-	HTML5.
+	\section{Affichage de << Mes documents >>}
+		Lorsque l'on est connecté, on a la possibilité d'afficher ses propres documents. Ceux-ci s'affiche de la même manière que
+		section \ref{docUser} cependant, une information supplémentaire est affichée: la description mise par l'utilisateur. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=18cm]{screens/mesDocs.png} 
+		\caption{Liste de mes documents} 
+		\label{fig:index}
+	\end{figure}
+	\section{Création et suppression de la base de données}
+	Il est également possible de recréer ou de supprimer la base de données. Supprimer une base inexistante, ou créer une base déjà
+	existante ne créera pas de bug, cependant l'action ne s'effectuera pas.\footnote{Utilisation de l'instruction mysql \texttt{if
+	exist}}.
+
+	Pour éviter les erreurs maladroites, une boite de dialogue s'affiche en cas de demande de suppression de la base de données,
+	comme le montre la figure \ref{fig:suppression}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=18cm]{screens/suppression.png} 
+		\caption{Demande de suppression de la base de données} 
+		\label{fig:suppression}
+	\end{figure}
 	\appendix
 	\listoffigures
 	\removepagebreak

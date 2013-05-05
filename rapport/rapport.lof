@@ -1,13 +1,14 @@
 \select@language {french}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Mod\IeC {\`e}le conceptuel de donn\IeC {\'e}es de l'application}}{4}{figure.1.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Affichage des demandes dans Redmine}}{5}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Affichage des demandes dans Redmine}}{6}{figure.2.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Page d'accueil de l'application}}{11}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Recherche d'une s\IeC {\'e}rie}}{12}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Recherche d'un \IeC {\'e}pisode}}{12}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Administration}}{13}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces HTML5 validator -- Passed}}{14}{figure.4.5}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Nuage de tags et recherche}}{12}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Liste de tous les documents}}{13}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Liste des documents d'un utilisateur}}{13}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Liste de mes documents}}{14}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Demande de suppression de la base de donn\IeC {\'e}es}}{14}{figure.4.5}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
